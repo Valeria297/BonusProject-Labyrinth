@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Main {
 
-   private static char[][] pathArray;
+    private static char[][] pathArray;
 
     public static void main(String[] args) throws IOException {
         BufferedReader buffReader = new BufferedReader(new FileReader("C:\\Users\\ольга\\IdeaProjects\\BonusProject\\src\\com\\company\\INPUT.TXT"));
@@ -17,9 +17,9 @@ public class Main {
         int n = buffReader.read();
         n = n * h;
 
-         pathArray = new char[m][n];
+        pathArray = new char[m][n];
 
-         for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 String line = buffReader.readLine();
                 for (int k = 0; k < line.length(); k++) {
@@ -32,10 +32,10 @@ public class Main {
             }
         }
 
-        Graph graph = new Graph();
-        graph.dfs(pathArray);
+        Algorithm algorithm = new Algorithm();
+        algorithm.algorithmOfPassing(pathArray);
 
-        int timeCount = (graph.getStack().size() - 1) * 5;
+        int timeCount = algorithm.getCountSteps() * 5;
         System.out.println(timeCount);
     }
 
