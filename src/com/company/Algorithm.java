@@ -30,6 +30,7 @@ public class Algorithm {
                     }
 
                     if (pathArray[i][j] == '.' && !array[i][j]) {
+                        array[i][j] = true;
                         player = pathArray[i][j];
                         countSteps++;
                     }
@@ -38,6 +39,7 @@ public class Algorithm {
                             && pathArray[i + 1][j + 1] == 'o'
                             && pathArray[i + 1][j - 1] == 'o'
                             && !array[i][j]) {
+                        array[i][j] = true;
                         player = pathArray[i + 1][j];
                         countSteps++;
                     }
