@@ -4,7 +4,7 @@ public class Algorithm {
     private boolean array[][] = new boolean[3][9];
     private int countSteps = 0;
 
-    public int algorithmOfPassing(char[][] pathArray) {
+   /* public int algorithmOfPassing(char[][][] pathArray) {
         char player = '.';
 
         for (int i = 0; i < pathArray.length; i++) {
@@ -49,7 +49,7 @@ public class Algorithm {
         }
 
         return 0;
-    }
+    }*/
 
     public int getCountSteps() {
         return countSteps;
