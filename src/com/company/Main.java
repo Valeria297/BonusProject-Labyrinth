@@ -1,8 +1,7 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Main {
@@ -10,29 +9,43 @@ public class Main {
     private static char[][][] pathArray;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader buffReader = new BufferedReader(new FileReader("C:\\Users\\ольга\\IdeaProjects\\BonusProject\\src\\com\\company\\INPUT.TXT"));
+        int h = 0;
+        int m = 0;
+        int n = 0;
 
-        int[] ints = Arrays.stream(buffReader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int h = ints[0];
-        int m = ints[1];
-        int n = ints[2];
+        try (
+                BufferedReader buffReader = new BufferedReader(
+                        new InputStreamReader(
+                                new FileInputStream("C:\\Users\\ольга\\IdeaProjects\\BonusProject\\src\\com\\company\\INPUT.TXT"),
+                                StandardCharsets.UTF_8
+                        )
+                )
+        ) {
+            int[] ints = Arrays.stream(buffReader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+            h = ints[0];
+            m = ints[1];
+            n = ints[2];
+            pathArray = new char[h][m][n];
 
-        pathArray = new char[h][m][n];
-
-        for (int b = 0; b < h; b++) {
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    String line = String.valueOf(String.valueOf(buffReader.readLine()).toCharArray());
-
-                    for (int k = 0; k < line.length(); k++) {
-                        if (!line.equals(" ")) {
-                            pathArray[b][i][j] = line.charAt(k);
-                        } else {
-                            buffReader.readLine();
+            String line;
+            while ((line = buffReader.readLine()) != null) {
+                for (int b = 0; b < h; b++) {
+                    for (int i = 0; i < m; i++) {
+                        for (int j = 0; j < n; j++) {
+                            char[] lineChar = line.toCharArray();
+                            for (int k = 0; k < lineChar.length; k++) {
+                                if (!line.equals(" ")) {
+                                    pathArray[b][i][j] = lineChar[k];
+                                } else {
+                                    buffReader.readLine();
+                                }
+                            }
                         }
                     }
                 }
             }
+            buffReader.close();
+        } catch (IOException e) {
         }
 
         System.out.println(Arrays.deepToString(pathArray));
