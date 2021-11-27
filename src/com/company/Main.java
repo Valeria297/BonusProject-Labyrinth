@@ -22,7 +22,8 @@ public class Main {
         for (int b = 0; b < h; b++) {
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
-                    String line = String.valueOf(buffReader.read());
+                    String line = String.valueOf(String.valueOf(buffReader.readLine()).toCharArray());
+
                     for (int k = 0; k < line.length(); k++) {
                         if (!line.equals(" ")) {
                             pathArray[b][i][j] = line.charAt(k);
